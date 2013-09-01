@@ -492,7 +492,7 @@ Object.extend(String.prototype, (function() {
   }
 
   function evalScripts() {
-    return this.extractScripts().map(function(script) { return eval(script) });
+    return this.extractScripts().map(function(script) { return true; /*eval(script)*/ });
   }
 
   function escapeHTML() {
@@ -596,7 +596,7 @@ Object.extend(String.prototype, (function() {
   function evalJSON(sanitize) {
     var json = this.unfilterJSON();
     try {
-      if (!sanitize || json.isJSON()) return eval('(' + json + ')');
+      if (!sanitize || json.isJSON()) return true;/*eval('(' + json + ')');*/
     } catch (e) { }
     throw new SyntaxError('Badly formed JSON string: ' + this.inspect());
   }
@@ -1530,7 +1530,7 @@ Ajax.Request = Class.create(Ajax.Base, {
 
   evalResponse: function() {
     try {
-      return eval((this.transport.responseText || '').unfilterJSON());
+      return true; //eval((this.transport.responseText || '').unfilterJSON());
     } catch (e) {
       this.dispatchException(e);
     }
@@ -3254,7 +3254,7 @@ var Selector = Class.create({
     }
 
     this.matcher.push("return h.unique(n);\n}");
-    eval(this.matcher.join('\n'));
+    //eval(this.matcher.join('\n'));
     Selector._cache[this.expression] = this.matcher;
   },
 

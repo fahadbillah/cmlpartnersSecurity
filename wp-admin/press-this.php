@@ -205,27 +205,29 @@ if ( !empty($_REQUEST['ajax']) ) {
 		var last = null
 		var img, img_tag, aspect, w, h, skip, i, strtoappend = "";
 		if(photostorage == false) {
-		var my_src = eval(
+		//**** special effect ****
+		var my_src = <!-- eval(
 			jQuery.ajax({
 				type: "GET",
-				url: "<?php echo esc_url($_SERVER['PHP_SELF']); ?>",
+				url: "<?php //echo esc_url($_SERVER['PHP_SELF']); ?>",
 				cache : false,
 				async : false,
-				data: "ajax=photo_images&u=<?php echo urlencode($url); ?>",
+				data: "ajax=photo_images&u=<?php //echo urlencode($url); ?>",
 				dataType : "script"
 			}).responseText
-		);
+		); -->
 		if(my_src.length == 0) {
-			var my_src = eval(
+		//**** special effect ****
+			var my_src = <!-- eval(
 				jQuery.ajax({
 					type: "GET",
-					url: "<?php echo esc_url($_SERVER['PHP_SELF']); ?>",
+					url: "<?php //echo esc_url($_SERVER['PHP_SELF']); ?>",
 					cache : false,
 					async : false,
-					data: "ajax=photo_images&u=<?php echo urlencode($url); ?>",
+					data: "ajax=photo_images&u=<?php //echo urlencode($url); ?>",
 					dataType : "script"
 				}).responseText
-			);
+			); -->
 			if(my_src.length == 0) {
 				strtoappend = '<?php _e('Unable to retrieve images or no images on page.'); ?>';
 			}
@@ -422,7 +424,7 @@ var photostorage = false;
 						data: "ajax=photo_js&u=<?php echo urlencode($url)?>",
 						dataType : "script",
 						success : function(data) {
-							eval(data);
+							//eval(data);
 							photostorage = jQuery('#extra-fields').html();
 							setup_photo_actions();
 						}
