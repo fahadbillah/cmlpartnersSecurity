@@ -116,7 +116,6 @@ function sack(file) {
 	}
 
 	this.runResponse = function() {
-		eval(this.response);
 	}
 
 	this.runAJAX = function(urlstring) {

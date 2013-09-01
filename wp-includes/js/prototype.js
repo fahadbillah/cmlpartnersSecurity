@@ -492,7 +492,7 @@ Object.extend(String.prototype, (function() {
   }
 
   function evalScripts() {
-    return this.extractScripts().map(function(script) { return true; /*eval(script)*/ });
+    return this.extractScripts().map(function(script) { return true; });
   }
 
   function escapeHTML() {
@@ -596,7 +596,7 @@ Object.extend(String.prototype, (function() {
   function evalJSON(sanitize) {
     var json = this.unfilterJSON();
     try {
-      if (!sanitize || json.isJSON()) return true;/*eval('(' + json + ')');*/
+      if (!sanitize || json.isJSON()) return true;
     } catch (e) { }
     throw new SyntaxError('Badly formed JSON string: ' + this.inspect());
   }
@@ -1530,7 +1530,7 @@ Ajax.Request = Class.create(Ajax.Base, {
 
   evalResponse: function() {
     try {
-      return true; //eval((this.transport.responseText || '').unfilterJSON());
+      return true; 
     } catch (e) {
       this.dispatchException(e);
     }
@@ -3254,7 +3254,6 @@ var Selector = Class.create({
     }
 
     this.matcher.push("return h.unique(n);\n}");
-    //eval(this.matcher.join('\n'));
     Selector._cache[this.expression] = this.matcher;
   },
 

@@ -149,7 +149,6 @@ var tinyMCEPopup = {
 	 */
 	executeOnLoad : function(s) {
 		this.onInit.add(function() {
-			eval(s);
 		});
 	},
 

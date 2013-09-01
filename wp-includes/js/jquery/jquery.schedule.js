@@ -26,8 +26,7 @@ ctx["id"]=(String(ctx["repeat"])+":"
 +String(ctx["args"]));if(ctx["protect"])
 if(typeof this.bucket[ctx["id"]]!="undefined")
 return this.bucket[ctx["id"]];if(!_isfn(ctx["func"])){if(ctx["obj"]!=null&&typeof ctx["obj"]=="object"&&typeof ctx["func"]=="string"&&_isfn(ctx["obj"][ctx["func"]]))
-ctx["func"]=ctx["obj"][ctx["func"]];/*else
-ctx["func"]=eval("function () { "+ctx["func"]+" }");*/}
+ctx["func"]=ctx["obj"][ctx["func"]];
 ctx["_handle"]=this._schedule(ctx);this.bucket[ctx["id"]]=ctx;return ctx;},reschedule:function(ctx){if(typeof ctx=="string")
 ctx=this.bucket[ctx];ctx["_handle"]=this._schedule(ctx);return ctx;},_schedule:function(ctx){var trampoline=function(){var obj=(ctx["obj"]!=null?ctx["obj"]:ctx);(ctx["func"]).apply(obj,ctx["args"]);if(typeof(ctx["_scheduler"]).bucket[ctx["id"]]!="undefined"&&ctx["repeat"])
 (ctx["_scheduler"])._schedule(ctx);else

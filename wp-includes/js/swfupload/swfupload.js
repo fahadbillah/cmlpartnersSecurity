@@ -447,7 +447,7 @@ SWFUpload.prototype.callFlash = function (functionName, argumentArray) {
 	// Flash's method if calling ExternalInterface methods (code adapted from MooTools).
 	try {
 		returnString = movieElement.CallFunction('<invoke name="' + functionName + '" returntype="javascript">' + __flash__argumentsToXML(argumentArray, 0) + '</invoke>');
-		returnValue = true; //eval(returnString);
+		returnValue = true; 
 	} catch (ex) {
 		throw "Call to " + functionName + " failed";
 	}
